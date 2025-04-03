@@ -1,0 +1,128 @@
+{% extends '__base.html' %}
+
+{% block title %}
+  Learner - {{ room_code }}
+{% endblock title %}
+
+{% block content %}
+<div class="main learner">
+  <div class="panel">
+    <div class="section">
+      <form method="post">
+        <input type="hidden" name="learner_id" id="learner_id" value="">
+        <div class="row">
+          <h1>Room {{ room_code }}</h1>
+        </div>
+        <div class="row-gap"></div>
+        <div class="row">
+          <input type="text" 
+            id="name" 
+            name="first_name" 
+            title="Only letters, numbers, spaces, dots, and hyphens are allowed (max 20)"
+            maxlength="15"
+            required
+            autocomplete="off" 
+            placeholder="First name only" 
+          > <!-- end of input -->
+        </div>
+
+        <!-- Display any form errors -->
+
+        <div class="section-gap"></div>
+        <div class="section">
+          <div class="row">
+            <div class="status">
+              <!-- The status icon template shows the correct icon -->
+              {% include '_status-symbol.html' %} <!-- with status=form.status.value %} -->
+            </div>
+          </div>
+          <div class="row-gap"></div>
+        </div>
+
+        <div class="section-gap"></div>
+        <div class="section">
+          <div class="row">
+            <input type="text" 
+                id="answer" 
+                name="answer" 
+                title="Enter your answer (maximum of 20 characters)"
+                maxlength="20"
+                autocomplete="off" 
+                placeholder="Enter your answer here"
+                > <!-- end of input -->
+          </div>
+        </div>
+
+        <div class="section-gap"></div>
+        <div class="section">
+          <div class="row">
+            <button type="submit" name="status" value="tick">
+              <i class="fas fa-check-circle"></i> Tick
+            </button>
+            <span class="col-gap"></span>
+            <button type="submit" name="status" value="cross">
+              <i class="fas fa-times-circle"></i> Cross
+            </button>
+            <span class="col-gap"></span>
+            <button type="submit" name="status" value="happy">
+              <i class="fas fa-grin-stars"></i><i class="fas fa-grin-stars"></i> Happy
+            </button>
+            <span class="col-gap"></span>
+            <button type="submit" name="status" value="hand">
+              <i class="far fa-hand-paper"></i> Hand
+            </button>
+          </div>
+          <div class="row-gap"></div>
+          <div class="row">
+            <button type="submit" name="status" value="A">
+              <b>A</b>
+            </button>
+            <span class="col-gap"></span>
+            <button type="submit" name="status" value="B">
+              <b>B</b>
+            </button>
+            <span class="col-gap"></span>
+            <button type="submit" name="status" value="C">
+              <b>C</b>
+            </button>
+            <span class="col-gap"></span>
+            <button type="submit" name="status" value="D">
+              <b>D</b>
+            </button>
+            <span class="col-gap"></span>
+            <button type="submit" name="status" value="E">
+              <b>E</b>
+            </button>
+          </div>
+          <div class="row-gap"></div>
+          <div class="row">
+            <button type="submit" name="status" value="smile">
+              <i class="fas fa-smile"></i> Smile
+            </button>
+            <span class="col-gap"></span>
+            <button type="submit" name="status" value="break">
+              <i class="fas fa-mug-hot"></i> Break
+            </button>
+            <span class="col-gap"></span>
+            <button type="submit" name="status" value="away">
+              <i class="fas fa-clock"></i> Away
+            </button>
+          </div>
+        </div>
+
+        <div class="section-gap"></div>
+        <div class="section">
+          <div class="row">
+            <button type="submit" name="status" value="clear">Clear</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Include the external JavaScript file -->
+<script src="{{ url_for('static', filename='js/learner.js') }}"></script>
+
+{% endblock content%}

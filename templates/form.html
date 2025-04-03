@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Your Status</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+    <h1>Room {{ room_code }} - Submit Your Status</h1>
+    <form method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" required><br><br>
+
+        <label for="status">Status:</label>
+        <select name="status">
+            <option value="Ready">Ready</option>
+            <option value="Not Ready">Not Ready</option>
+            <option value="Need Help">Need Help</option>
+        </select><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
