@@ -1,6 +1,6 @@
 {% extends '__base.html' %}
 
-{% block title %}Learner - {{room_code}}{% endblock title %}
+{% block title %}Tutor - {{room_code}}{% endblock title %}
 
 {% block content %}
 <div class="main tutor">
@@ -37,22 +37,23 @@
             </tr>
           </thead>
           <tbody>
-            {% for row in learners %}
+            {% for key,value in learners.items() %}
               <tr class="learner" onclick="toggleSelect(this)">
                 <td>
                   <span>
-                    {{ row.first_name}}
+                    {{ value.first_name }}
                   </span>
                 </td>
                 <td style="text-align: right;">
                   <span>
-                    {% if row.answer %}
-                      {{ row.answer }}
+                    {% if value.answer %}
+                      {{ value.answer }}
                     {% endif %}
                   </span>
                 </td>
                 <td class="status">
-                  {% include '_status-symbol.html' %} <!-- with status=row.status %} -->
+                  {% set status = value.status %}
+                  {% include '_status-symbol.html' %}
                 </td>
               </tr>  
             {% endfor %}
@@ -100,17 +101,10 @@
   </div>
 </div>
 
-
 <script>
   function toggleSelect(row) {
       // Toggle the "selected" class when clicking
       row.classList.toggle('selected');
   }
 </script>
-
-
-
-
-
-
 {% endblock content%}

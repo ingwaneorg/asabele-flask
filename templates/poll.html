@@ -1,0 +1,63 @@
+{% extends '__base.html' %}
+
+{% block title %}Poll - {{room_code}}{% endblock title %}
+
+{% block content %}
+<div class="main tutor">
+  <div class="panel">
+
+    <div class="section">
+      <div class="row">
+        <h1>Room {{ room_code }}</h1>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-gap"></div>
+      <div class="row2">
+        <table>
+          <thead>
+            <tr>
+              <td colspan="2">
+                Total learners
+              </td>
+              <td style="text-align: right;">
+                {{ learner_count }}
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            {% for status, names in status_counts.items() %}
+              <tr>
+                <td style="text-align: left;">
+                  {% if names|length == max_count %}
+                    {% for name in names %}<div class="block green-block"></div>{% endfor %}
+                  {% else %}
+                    {% for name in names %}<div class="block"></div>{% endfor %}
+                  {% endif %}
+                  </td>
+                <td class="status" style="text-align: left;">
+                  {% include '_status-symbol.html' %}
+                </td>
+                <td style="text-align: right;">
+                  <span>{{ names|length }}</span>
+                </td>
+              </tr>  
+            {% endfor %}
+            </tbody>
+          <tfoot>            
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    {% if learner_count == 0  %}
+    <div class="section">
+      <div class="section-gap"></div>
+      <div class="row">No learners have joined the room yet.</div>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock content%}
