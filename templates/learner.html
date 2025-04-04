@@ -22,7 +22,8 @@
             maxlength="15"
             required
             autocomplete="off" 
-            placeholder="First name only" 
+            placeholder="First name only"
+            value="{{ request.form.get('first_name', first_name) }}"
           > <!-- end of input -->
         </div>
 
@@ -33,7 +34,7 @@
           <div class="row">
             <div class="status">
               <!-- The status icon template shows the correct icon -->
-              {% include '_status-symbol.html' %} <!-- with status=form.status.value %} -->
+              {% include '_status-symbol.html' %}
             </div>
           </div>
           <div class="row-gap"></div>
@@ -49,6 +50,7 @@
                 maxlength="20"
                 autocomplete="off" 
                 placeholder="Enter your answer here"
+                value="{{ answer }}"
                 > <!-- end of input -->
           </div>
         </div>
